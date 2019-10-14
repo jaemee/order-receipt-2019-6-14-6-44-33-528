@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class OrderReceiptTest {
+public class CheckoutInformationReceiptTest {
 
     @Test
     public void shouldPrintCustomerInformationOnOrder() {
-        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
-        OrderReceipt receipt = new OrderReceipt(order);
+        CheckoutInformation checkoutInformation = new CheckoutInformation("Mr X", "Chicago, 60601", new ArrayList<Item>());
+        OrderReceipt receipt = new OrderReceipt(checkoutInformation);
 
         String output = receipt.printReceipt();
 
@@ -21,12 +21,12 @@ public class OrderReceiptTest {
 
     @Test
     public void shouldPrintLineItemAndSalesTaxInformation() {
-        ArrayList<LineItem> lineItems = new ArrayList<>();
-        lineItems.add(new LineItem("milk", 10.0, 2));
-        lineItems.add(new LineItem("biscuits", 5.0, 5));
-        lineItems.add(new LineItem("chocolate", 20.0, 1));
+        ArrayList<Item> items = new ArrayList<>();
+        items.add(new Item("milk", 10.0, 2));
+        items.add(new Item("biscuits", 5.0, 5));
+        items.add(new Item("chocolate", 20.0, 1));
 
-        OrderReceipt receipt = new OrderReceipt(new Order(null, null, lineItems));
+        OrderReceipt receipt = new OrderReceipt(new CheckoutInformation(null, null, items));
 
         String output = receipt.printReceipt();
 
